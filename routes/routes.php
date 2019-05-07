@@ -20,6 +20,7 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
     $router->get('/instituciones', ['name' => 'institutions.index', 'uses' => 'InstitutionsController@index']);
     $router->get('/institucion/{institution}/usuarios', ['name' => 'institutions.users', 'uses' => 'InstitutionsController@users_for_institution']);
     $router->get('/institucion/{institucion}/sedes', ['name' => 'institutions.headquarters', 'uses' => 'InstitutionsController@headquarters_for_institution']);
+    $router->get('/institucion/{institucion}/programas_academicos', ['name' => 'institutions.programas', 'uses' => 'InstitutionsController@programs_for_institution']);
     $router->get('/institucion/{institucion}/sedes/jornadas', ['name' => 'institutions.headquarters.journeys', 'uses' => 'HeadquartersController@headquarters_and_journeys']);
     $router->get('/institucion/sede/{sede}/instalaciones', ['name' => 'institutions.headquarters.facilities', 'uses' => 'HeadquartersController@headquarters_and_facilities']);
 
@@ -43,4 +44,8 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
     // Routes for features
     $router->get('/caracteristicas', ['name' => 'features.index', 'uses' => 'FeaturesController@index']);
     $router->post('/caracteristica', ['name' => 'features.store', 'uses' => 'FeaturesController@store']);
+
+    // Routes for academic programs
+    $router->get('/programas_academicos', ['name' => 'academic_program.index', 'uses' => 'AcademicProgramsController@index']);
+    $router->post('/programa_academico', ['name' => 'academic_program.store', 'uses' => 'AcademicProgramsController@store']);
 });
