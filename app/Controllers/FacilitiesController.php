@@ -42,4 +42,16 @@ class FacilitiesController
             ->get();
         return $features;
     }
+
+    public function facilities_and_schedules($instalacion)
+    {
+        /*
+        select * from `horarios`
+        where `instalaciones_id`=?
+        */
+        $schedules = DB::table('horarios')
+            ->where('horarios.instalaciones_id', $instalacion)
+            ->get();
+        return $schedules;
+    }
 }
