@@ -29,4 +29,32 @@ class PensumsController
         ]);
         return ["message" => true];
     }
+
+    public function pensums_add_subject(Request $request)
+    {
+        /*
+        insert into `asignaturas_pensums` (docente, pensums_id, asignaturas_id, semestres_id)
+        values (?);
+        */
+        DB::table('asignaturas_pensums')->insert([
+            'docente' => $request->docente,
+            'pensums_id' => $request->pensum,
+            'asignaturas_id' => $request->asignatura,
+            'semestres_id' => $request->semestre,
+        ]);
+        return ["message" => true];
+    }
+
+    public function pensums_remove_subject(Request $request)
+    {
+        /*
+        delete from `asignaturas_pensums`
+        where `asignaturas_id`=? and `pensums_id`=?;
+        */
+        DB::table('asignaturas_pensums')->where([
+            ["asignaturas_id", "=", $request->asignatura_id],
+            ["pensums_id", "=", $request->pensum_id]
+        ])->delete();
+        return ["message" => true];
+    }
 }
