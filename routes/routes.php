@@ -47,9 +47,18 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
 
     // Routes for academic programs
     $router->get('/programas_academicos', ['name' => 'academic_programs.index', 'uses' => 'AcademicProgramsController@index']);
+    $router->get('/programas_academico/{programa}/pensums', ['name' => 'academic_programs.pensums', 'uses' => 'AcademicProgramsController@pensums_for_programs']);
     $router->post('/programa_academico', ['name' => 'academic_programs.store', 'uses' => 'AcademicProgramsController@store']);
 
     // Routes for pensums
     $router->get('/pensums', ['name' => 'pensums.index', 'uses' => 'PensumsController@index']);
     $router->post('/pensum', ['name' => 'pensums.store', 'uses' => 'PensumsController@store']);
+
+    // Routes for subjects
+    $router->get('/asignaturas', ['name' => 'subjects.index', 'uses' => 'SubjectsController@index']);
+    $router->post('/asignatura', ['name' => 'subjects.store', 'uses' => 'SubjectsController@store']);
+
+    // Routes for semesters
+    $router->get('/semestres', ['name' => 'semesters.index', 'uses' => 'SemestersController@index']);
+    $router->post('/semestre', ['name' => 'semesters.store', 'uses' => 'SemestersController@store']);
 });

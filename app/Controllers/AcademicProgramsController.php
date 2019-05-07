@@ -31,4 +31,16 @@ class AcademicProgramsController
         ]);
         return ["message" => true];
     }
+
+    public function pensums_for_programs($program)
+    {
+        /*
+        select * from `pensums` where `pensums`.`programas_academicos_id` = ?
+        */
+        $pensums = DB::table('pensums')->where(
+            'pensums.programas_academicos_id',
+            $program
+        )->get();
+        return $pensums;
+    }
 }
