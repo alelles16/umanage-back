@@ -50,4 +50,16 @@ class InstitutionsController
         $headquarters = DB::table('sedes')->where('sedes.instituciones_id', $institution)->get();
         return $headquarters;
     }
+
+    public function programs_for_institution($institution)
+    {
+        /*
+        select * from `programas_academicos` where `programas_academicos`.`instituciones_id` = ?
+        */
+        $programs = DB::table('programas_academicos')->where(
+            'programas_academicos.instituciones_id',
+            $institution
+        )->get();
+        return $programs;
+    }
 }
