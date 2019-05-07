@@ -1,0 +1,46 @@
+<?php
+// Implements Laravel Routing tool
+use Illuminate\Routing\Router;
+
+$router->group(['namespace' => 'App\Controllers'], function (Router $router) {
+
+    // Routes for auth
+    $router->post('/registro', ['name' => 'users.register', 'uses' => 'UsersController@register']);
+    $router->post('/iniciar_sesion', ['name' => 'users.login', 'uses' => 'UsersController@login']);
+
+    // Routes for users
+    $router->get('/usuarios', ['name' => 'users.index', 'uses' => 'UsersController@index']);
+    $router->post('/usuario', ['name' => 'users.store', 'uses' => 'UsersController@store']);
+
+    // Routes for positions
+    $router->get('/cargos', ['name' => 'positions.index', 'uses' => 'PositionsController@index']);
+    $router->post('/cargos', ['name' => 'positions.store', 'uses' => 'PositionsController@store']);
+
+    // Routes for institutions
+    $router->get('/instituciones', ['name' => 'institutions.index', 'uses' => 'InstitutionsController@index']);
+    $router->get('/institucion/{institution}/usuarios', ['name' => 'institutions.users', 'uses' => 'InstitutionsController@users_for_institution']);
+    $router->get('/institucion/{institucion}/sedes', ['name' => 'institutions.headquarters', 'uses' => 'InstitutionsController@headquarters_for_institution']);
+    $router->get('/institucion/{institucion}/sedes/jornadas', ['name' => 'institutions.headquarters.journeys', 'uses' => 'HeadquartersController@headquarters_and_journeys']);
+    $router->get('/institucion/sede/{sede}/instalaciones', ['name' => 'institutions.headquarters.facilities', 'uses' => 'HeadquartersController@headquarters_and_facilities']);
+
+    $router->post('/institucion', ['name' => 'institutions.store', 'uses' => 'InstitutionsController@store']);
+    $router->post('/institucion/{institucion}/sedes/jornada', ['name' => 'institutions.headquarters.journey', 'uses' => 'HeadquartersController@headquarters_add_journeys']);
+    $router->post('/institucion/{institucion}/sedes/jornada', ['name' => 'institutions.headquarters.journey.remove', 'uses' => 'HeadquartersController@headquarters_remove_journeys']);
+
+    // Routes for headquarters
+    $router->get('/sedes', ['name' => 'headquarters.index', 'uses' => 'HeadquartersController@index']);
+    $router->post('/sede', ['name' => 'headquarters.store', 'uses' => 'HeadquartersController@store']);
+
+    // Routes for journeys
+    $router->get('/jornadas', ['name' => 'journeys.index', 'uses' => 'JourneysController@index']);
+    $router->post('/jornada', ['name' => 'journeys.store', 'uses' => 'JourneysController@store']);
+
+    // Routes for facilities
+    $router->get('/instalaciones', ['name' => 'facilities.index', 'uses' => 'FacilititesController@index']);
+    $router->get('/instalacion/{instalacion}/caracteristicas', ['name' => 'facilities.features', 'uses' => 'FacilititesController@facilites_and_features']);
+    $router->post('/instalacion', ['name' => 'facilities.store', 'uses' => 'FacilititesController@store']);
+
+    // Routes for features
+    $router->get('/caracteristicas', ['name' => 'features.index', 'uses' => 'FeaturesController@index']);
+    $router->post('/caracteristica', ['name' => 'features.store', 'uses' => 'FeaturesController@store']);
+});
