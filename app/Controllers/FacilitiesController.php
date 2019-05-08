@@ -51,6 +51,7 @@ class FacilitiesController
         */
         $schedules = DB::table('horarios')
             ->where('horarios.instalaciones_id', $instalacion)
+            ->orderBy('hora_inicio', 'asc')
             ->get();
         return $schedules;
     }
