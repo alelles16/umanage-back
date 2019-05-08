@@ -125,7 +125,7 @@ class UsersController
     public function login(Request $request)
     {
         $user = DB::table('usuarios')->where([
-            ['email', $request->email]
+            ['email', $request->email_usuario]
         ])->first();
 
         if ($user && password_verify($request->contrasena, $user->contrasena)) {

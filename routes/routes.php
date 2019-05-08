@@ -14,7 +14,7 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
 
     // Routes for positions
     $router->get('/cargos', ['name' => 'positions.index', 'uses' => 'PositionsController@index']);
-    $router->post('/cargos', ['name' => 'positions.store', 'uses' => 'PositionsController@store']);
+    $router->post('/cargo', ['name' => 'positions.store', 'uses' => 'PositionsController@store']);
 
     // Routes for institutions
     $router->get('/instituciones', ['name' => 'institutions.index', 'uses' => 'InstitutionsController@index']);
