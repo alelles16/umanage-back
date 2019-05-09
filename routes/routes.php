@@ -37,9 +37,9 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
     $router->post('/jornada', ['name' => 'journeys.store', 'uses' => 'JourneysController@store']);
 
     // Routes for facilities
-    $router->get('/instalaciones', ['name' => 'facilities.index', 'uses' => 'FacilititesController@index']);
-    $router->get('/instalacion/{instalacion}/caracteristicas', ['name' => 'facilities.features', 'uses' => 'FacilititesController@facilites_and_features']);
-    $router->get('/instalacion/{instalacion}/horario', ['name' => 'facilities.schedule', 'uses' => 'FacilititesController@facilities_and_schedules']);
+    $router->get('/instalaciones', ['name' => 'facilities.index', 'uses' => 'FacilitiesController@index']);
+    $router->get('/instalacion/{instalacion}/caracteristicas', ['name' => 'facilities.features', 'uses' => 'FacilitiesController@facilites_and_features']);
+    $router->get('/instalacion/{instalacion}/horario', ['name' => 'facilities.schedule', 'uses' => 'FacilitiesController@facilities_and_schedules']);
     $router->post('/instalacion', ['name' => 'facilities.store', 'uses' => 'FacilitiesController@store']);
 
     // Routes for features
