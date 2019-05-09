@@ -40,7 +40,7 @@ $router->group(['namespace' => 'App\Controllers'], function (Router $router) {
     $router->get('/instalaciones', ['name' => 'facilities.index', 'uses' => 'FacilititesController@index']);
     $router->get('/instalacion/{instalacion}/caracteristicas', ['name' => 'facilities.features', 'uses' => 'FacilititesController@facilites_and_features']);
     $router->get('/instalacion/{instalacion}/horario', ['name' => 'facilities.schedule', 'uses' => 'FacilititesController@facilities_and_schedules']);
-    $router->post('/instalacion', ['name' => 'facilities.store', 'uses' => 'FacilititesController@store']);
+    $router->post('/instalacion', ['name' => 'facilities.store', 'uses' => 'FacilitiesController@store']);
 
     // Routes for features
     $router->get('/caracteristicas', ['name' => 'features.index', 'uses' => 'FeaturesController@index']);
